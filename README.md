@@ -1,7 +1,171 @@
-# projects-crud-dashboard
-## 目的
+# Projects CRUD Dashboard
 
-React + TypeScript + MUI を用いて、任意のリソースを対象に Create / Read / Update / Delete（CRUD）操作が行えるシングルページ Web アプリケーションを実装し、フロントエンド開発スキルを証明する。
+React + TypeScript + MUI を用いて、プロジェクト管理を対象に Create / Read / Update / Delete（CRUD）操作が行えるシングルページ Web アプリケーションです。
+
+## 📋 実装された機能
+
+### ✅ 完了済み機能
+
+- **認証システム**
+  - ログイン機能（デモアカウント対応）
+  - ユーザーロール管理（一般ユーザー・管理者）
+  - 自動ログイン（トークン保存）
+
+- **プロジェクト管理**
+  - プロジェクト一覧表示（10件ページング）
+  - プロジェクト詳細表示
+  - プロジェクト新規作成（管理者のみ）
+  - プロジェクト編集（管理者のみ）
+  - プロジェクト削除（管理者のみ）
+  - ステータス管理（アクティブ・非アクティブ・完了）
+
+- **レスポンシブデザイン**
+  - 360px〜1200px対応
+  - モバイルファーストデザイン
+  - MUIコンポーネントによる統一デザイン
+
+- **バリデーション**
+  - フォーム入力検証（Zod + React Hook Form）
+  - 必須項目チェック
+  - エラーメッセージ表示
+
+- **状態管理**
+  - Redux Toolkit による状態管理
+  - モックAPIによるデータ操作
+
+## 🚀 セットアップ・実行方法
+
+### 前提条件
+- Node.js 18.x 以上
+- npm または yarn
+
+### インストール・実行
+```bash
+# 依存関係のインストール
+npm install
+
+# 開発サーバー起動
+npm run dev
+
+# ビルド
+npm run build
+
+# プレビュー
+npm run preview
+
+# テスト実行
+npm run test
+
+# Lint実行
+npm run lint
+```
+
+### デモアカウント
+- **管理者**: admin@example.com / password
+- **一般ユーザー**: user@example.com / password
+
+## 🎯 要件定義
+
+### 1. ユーザーストーリー
+- 一般ユーザとして、ログイン後にプロジェクト一覧を閲覧したい。その際 10 件ずつページングできる。
+- 管理者として、プロジェクトを新規作成・編集・削除できる。
+
+### 2. 受け入れ基準
+- ✅ 一覧画面は 360px〜1200px の幅でレイアウト崩れなく表示される。
+- ✅ 新規作成フォームで name が空欄の場合、エラーメッセージが出る。
+
+## 🛠 技術スタック
+
+| 区分 | 技術 / ライブラリ | バージョン | 用途 |
+|------|-------------------|------------|------|
+| **フロントエンド** | React | 18.x | UI 描画 |
+| | TypeScript | 5.x | 型安全 |
+| | Vite | 5.x | 開発・ビルド |
+| | MUI (Material UI) | 5.x | UI コンポーネント |
+| | React Router | 6.x | ルーティング |
+| | Axios | 1.x | REST 通信 |
+| | React Hook Form + Zod | 7.x / 3.x | フォーム & バリデーション |
+| | Redux Toolkit | 2.x | グローバル状態管理 |
+| **テスト** | Vitest + React Testing Library | - | 単体・結合テスト |
+| **Lint/Format** | ESLint, Prettier | - | コード品質 |
+
+## 📱 画面一覧
+
+| 画面ID | 画面名 | URL | 機能概要 |
+|--------|--------|-----|----------|
+| P01 | ログイン | /login | トークン認証 |
+| P02 | プロジェクト一覧 | /projects | ページング・検索・並べ替え |
+| P03 | プロジェクト詳細 | /projects/:id | 詳細閲覧 |
+| P04 | プロジェクト新規作成 | /projects/new | 入力フォーム |
+| P05 | プロジェクト編集 | /projects/:id/edit | 既存データ編集 |
+| P06 | 404 | * | Not Found 画面 |
+
+## 🏗 アーキテクチャ
+
+```
+Client (React SPA)
+   │  HTTPS JSON (REST)
+Mock API Service
+   │  Local Storage
+Browser Storage
+```
+
+## 📂 プロジェクト構成
+
+```
+src/
+├─ components/          # 共通コンポーネント
+│  ├─ Layout.tsx       # レイアウト
+│  └─ ProtectedRoute.tsx # 認証ガード
+├─ contexts/           # React Context
+│  └─ AuthContext.tsx  # 認証コンテキスト
+├─ pages/             # ページコンポーネント
+│  ├─ LoginPage.tsx
+│  ├─ ProjectsPage.tsx
+│  ├─ ProjectDetailPage.tsx
+│  ├─ ProjectCreatePage.tsx
+│  ├─ ProjectEditPage.tsx
+│  └─ NotFoundPage.tsx
+├─ services/          # API サービス
+│  └─ api.ts          # Mock API
+├─ store/             # Redux Store
+│  ├─ store.ts
+│  └─ slices/
+│     ├─ authSlice.ts
+│     └─ projectsSlice.ts
+├─ types/             # 型定義
+│  └─ index.ts
+└─ main.tsx           # エントリーポイント
+```
+
+## 🎨 デザインシステム
+
+- **カラーパレット**: Material Design準拠
+- **ブレークポイント**: 
+  - xs: 0px
+  - sm: 360px 
+  - md: 768px
+  - lg: 1024px
+  - xl: 1200px
+- **フォント**: Roboto (MUIデフォルト)
+
+## 🔧 開発情報
+
+- **開発サーバー**: http://localhost:3000
+- **Mock API**: ローカルメモリ内でのデータ管理
+- **認証**: JWT トークンシミュレーション
+- **状態管理**: Redux Toolkit + RTK Query
+
+## 📝 今後の拡張予定
+
+- [ ] 実際のバックエンドAPI連携
+- [ ] 検索・フィルタリング機能
+- [ ] ソート機能
+- [ ] エクスポート機能（CSV/PDF）
+- [ ] ダークテーマ対応
+- [ ] 国際化（i18n）対応
+- [ ] ユニットテストの拡充
+- [ ] E2Eテストの実装
 
 ## スコープ
 	•	対象リソース: “Projects”（案件管理）
