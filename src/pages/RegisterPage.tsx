@@ -12,7 +12,7 @@ import {
     Typography,
 } from '@mui/material'
 import React, { useState } from 'react'
-import { Link as RouterLink, useNavigate } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 
 interface RegisterFormData {
     name: string
@@ -30,7 +30,6 @@ interface FormErrors {
 }
 
 export default function RegisterPage() {
-    const navigate = useNavigate()
     const [formData, setFormData] = useState<RegisterFormData>({
         name: '',
         email: '',
