@@ -1,0 +1,17 @@
+{
+    "github.copilot.chat.confirmations": false,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "github.copilot.chat.localeOverride": "ja",
+    "typescript.preferences.includePackageJsonAutoImports": "auto",
+    "typescript.suggest.autoImports": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "editor.formatOnSave": true
+}
