@@ -1,5 +1,9 @@
 {
     "github.copilot.chat.confirmations": false,
+    "github.copilot.terminal.suggestCommands": false,
+    "github.copilot.terminal.confirmExecution": false,
+    "terminal.integrated.confirmOnExit": "never",
+    "terminal.integrated.confirmOnKill": "never",
     "github.copilot.enable": {
         "*": true,
         "plaintext": false,
