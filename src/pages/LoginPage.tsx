@@ -1,22 +1,23 @@
-import React, { useState } from 'react'
-import { useNavigate, Navigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import {
-  Container,
-  Paper,
-  Box,
-  Typography,
-  TextField,
-  Button,
-  Alert,
-  CircularProgress,
-} from '@mui/material'
-import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import {
+  Alert,
+  Box,
+  Button,
+  CircularProgress,
+  Container,
+  Link,
+  Paper,
+  TextField,
+  Typography,
+} from '@mui/material'
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { Navigate, Link as RouterLink, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
-import { RootState } from '../store/store'
-import { loginStart, loginSuccess, loginFailure } from '../store/slices/authSlice'
 import { authApi } from '../services/api'
+import { loginFailure, loginStart, loginSuccess } from '../store/slices/authSlice'
+import { RootState } from '../store/store'
 
 const loginSchema = z.object({
   email: z.string().email('有効なメールアドレスを入力してください'),
@@ -48,10 +49,10 @@ const LoginPage: React.FC = () => {
     try {
       setError('')
       dispatch(loginStart())
-      
+
       const response = await authApi.login(data.email, data.password)
       dispatch(loginSuccess(response))
-      
+
       navigate('/projects')
     } catch (err) {
       dispatch(loginFailure())
@@ -73,13 +74,13 @@ const LoginPage: React.FC = () => {
           <Typography component="h1" variant="h4" align="center" gutterBottom>
             ログイン
           </Typography>
-          
+
           {error && (
             <Alert severity="error" sx={{ mb: 2 }}>
               {error}
             </Alert>
           )}
-          
+
           <Box
             component="form"
             onSubmit={handleSubmit(onSubmit)}
@@ -118,8 +119,14 @@ const LoginPage: React.FC = () => {
             >
               {isLoading ? <CircularProgress size={24} /> : 'ログイン'}
             </Button>
+
+            <Box textAlign="center" sx={{ mt: 2 }}>
+              <Link component={RouterLink} to="/register" variant="body2">
+                アカウントをお持ちでない方はこちら
+              </Link>
+            </Box>
           </Box>
-          
+
           <Box sx={{ mt: 2 }}>
             <Typography variant="body2" color="text.secondary" align="center">
               デモ用アカウント:

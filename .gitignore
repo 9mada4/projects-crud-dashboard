@@ -28,6 +28,19 @@ dist-ssr
 .env.development.local
 .env.test.local
 .env.production.local
+.env.secrets
+
+# Security
+*.pem
+*.key
+*.crt
+secrets/
+config/secrets/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
 
 # Coverage directory used by tools like istanbul
 coverage

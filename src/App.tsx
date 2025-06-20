@@ -1,19 +1,21 @@
-import { Routes, Route } from 'react-router-dom'
-import { AuthProvider } from './contexts/AuthContext'
+import { Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout'
+import ProtectedRoute from './components/ProtectedRoute'
+import { AuthProvider } from './contexts/AuthContext'
 import LoginPage from './pages/LoginPage'
-import ProjectsPage from './pages/ProjectsPage'
+import NotFoundPage from './pages/NotFoundPage'
+import ProjectCreatePage from './pages/ProjectCreatePage'
 import ProjectDetailPage from './pages/ProjectDetailPage'
 import ProjectEditPage from './pages/ProjectEditPage'
-import ProjectCreatePage from './pages/ProjectCreatePage'
-import NotFoundPage from './pages/NotFoundPage'
-import ProtectedRoute from './components/ProtectedRoute'
+import ProjectsPage from './pages/ProjectsPage'
+import RegisterPage from './pages/RegisterPage'
 
 function App() {
   return (
     <AuthProvider>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route element={<ProtectedRoute />}>
           <Route element={<Layout />}>
             <Route path="/" element={<ProjectsPage />} />
